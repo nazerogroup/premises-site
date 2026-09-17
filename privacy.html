@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Premises</title>
+<meta name="description" content="Premises keeps your records on your device. No server, no accounts, no tracking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16191C;--ink-2:#4E555C;--ink-3:#7C838A;
+  --paper:#FCFBF9;--surface:#FFFFFF;
+  --rule:#E4E1DB;--rule-soft:#EFEDE8;
+  --seal:#6B2737;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 28px}
+header{border-bottom:1px solid var(--rule);background:var(--surface)}
+.masthead{display:flex;align-items:baseline;justify-content:space-between;padding:22px 0}
+.logo{font-size:19px;font-weight:600;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.masthead a.back{font-size:14px;color:var(--ink-2);text-decoration:none}
+.masthead a.back:hover{text-decoration:underline;text-underline-offset:3px}
+
+.title{padding:60px 0 8px}
+h1{font-size:38px;font-weight:600;letter-spacing:-.03em}
+.updated{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;margin-top:14px}
+
+.summary{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:26px;margin:34px 0 8px;
+}
+.summary p{color:var(--ink-2)}
+.summary p+p{margin-top:12px}
+
+section{padding:34px 0;border-top:1px solid var(--rule-soft)}
+section:first-of-type{border-top:0}
+h2{font-size:13px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:18px}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+ul{margin:0 0 14px 20px}
+li{margin-bottom:7px;color:var(--ink-2)}
+strong{font-weight:600}
+.term{font-weight:600;display:block;margin-top:16px}
+a{color:var(--seal)}
+footer{border-top:1px solid var(--rule);padding:30px 0 60px;font-size:13.5px;color:var(--ink-3);margin-top:20px}
+@media (max-width:620px){h1{font-size:30px}.title{padding:44px 0 8px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap masthead">
+    <a href="index.html" class="logo">Premises</a>
+    <a href="index.html" class="back">← Back</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="title">
+    <h1>Privacy policy</h1>
+    <div class="updated">Last updated 25 August 2026</div>
+  </div>
+
+  <div class="summary">
+    <p><strong>The short version.</strong> Premises keeps your records on your device. There's no server, no accounts, and no way for us to see anything you put in the app. Nothing you photograph, scan, record, or type is sent to us, because there's nowhere for it to go.</p>
+    <p>The one exception is trusted timestamps, described below — and even there, only a mathematical fingerprint leaves your phone. Never a file, never your location, never anything identifying you or your property.</p>
+  </div>
+
+  <section>
+    <h2>What Premises stores</h2>
+    <p>All of this is stored on your device only:</p>
+    <ul>
+      <li>Property details you enter — addresses, county, occupancy status</li>
+      <li>Photographs, videos, scanned documents, and voice recordings you capture</li>
+      <li>Text you type — statements, notes, answers to questions</li>
+      <li>Names and details of other people, where you choose to record them</li>
+      <li>Location coordinates recorded when you capture a photograph, if you've granted location permission</li>
+      <li>Reports you generate</li>
+    </ul>
+    <p>This lives in the app's private storage, protected by device encryption, and excluded from iCloud backup by default.</p>
+    <p>We have no access to any of it. Premises has no user accounts, no analytics, no crash reporting service, no advertising, and no third-party code libraries.</p>
+  </section>
+
+  <section>
+    <h2>Information about other people</h2>
+    <p>Premises lets you record information about people other than yourself — an occupant's name, what a neighbour told you, a witness's contact details. That's unavoidable when documenting a dispute.</p>
+    <p><strong>These records stay on your device.</strong> They aren't uploaded, shared, aggregated, sold, or combined with information about the same person from anywhere else. Premises doesn't build profiles and can't look anyone up.</p>
+    <p><strong>You're responsible for what you record.</strong> Record what's relevant and no more. Contact details for a witness are collected only when you confirm that person agreed to be contacted; otherwise Premises withholds them from any report it generates.</p>
+    <p>Premises does not read your contacts, does not access your address book, and does not look up information about anyone from any external source.</p>
+  </section>
+
+  <section>
+    <h2>Device permissions</h2>
+    <span class="term">Camera</span>
+    <p>To photograph property conditions and scan documents. Used only when you tap a capture control.</p>
+    <span class="term">Microphone</span>
+    <p>To record voice statements. Used only while you're actively recording, and iOS shows an indicator throughout.</p>
+    <span class="term">Photo library</span>
+    <p>To let you select existing images as evidence. Premises reads only the images you pick.</p>
+    <span class="term">Location, while in use</span>
+    <p>To record where a photograph was taken. Premises requests a single reading at the moment of capture and doesn't track you at any other time. Declining doesn't prevent you using the app — photographs are simply recorded without coordinates.</p>
+    <p>You can change any of these in iOS Settings at any time. Premises keeps working with all of them off.</p>
+  </section>
+
+  <section>
+    <h2>Trusted timestamps</h2>
+    <p>Premises can ask an independent Time Stamp Authority to confirm the date and time a piece of evidence existed. This is the only feature that sends anything off your device.</p>
+    <p><strong>What is sent:</strong> a SHA-256 hash — a 32-byte mathematical fingerprint of the file.</p>
+    <p><strong>What is not sent:</strong> the file itself, its name, your location, the property address, your identity, or anything else. A hash can't be reversed into the original file. The authority learns only that data with that fingerprint was submitted at that moment.</p>
+    <p><strong>Why:</strong> so a third party — a court, an attorney, an insurer — can verify independently that your evidence existed by a certain date, rather than relying on your phone's clock.</p>
+    <p>This can be turned off in settings, and Premises works fully without it.</p>
+  </section>
+
+  <section>
+    <h2>What Premises doesn't do</h2>
+    <ul>
+      <li>No accounts, no sign-in, no email address collected</li>
+      <li>No analytics or usage tracking of any kind</li>
+      <li>No advertising, and no data shared with advertisers</li>
+      <li>No third-party code libraries</li>
+      <li>No selling or sharing of data with anyone, for any purpose</li>
+      <li>No AI processing off your device — text recognition and all analysis run locally</li>
+      <li>No lookups of people, addresses, or public records</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sharing reports</h2>
+    <p>When you generate a report, Premises creates a PDF on your device. If you then share it — by email, message, AirDrop, or anything else — that sharing is done by you, through iOS, to recipients you choose. Premises isn't involved and keeps no record of where reports go.</p>
+    <p>Once a report leaves your device, this policy no longer governs it.</p>
+  </section>
+
+  <section>
+    <h2>Deleting your data</h2>
+    <p>You can delete any property, incident, evidence item, or report from within the app. Deleting a property removes everything attached to it.</p>
+    <p>Deleting Premises from your device removes all of its data permanently. There's no copy on any server, because there's no server. We can't delete your data for you and can't recover it if you delete it.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Premises isn't directed at children and isn't intended for anyone under 13. We don't knowingly collect information from children.</p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>Depending on where you live, you may have rights under laws such as the California Consumer Privacy Act or the GDPR — to access, correct, delete, or export your personal information.</p>
+    <p>Because Premises stores everything on your device and we hold nothing, you already have direct and complete control. You can view, edit, export, and delete all of it from within the app without asking us.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the updated version will be posted here with a new date, and material changes will be noted in the app.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Nazero Group LLC<br>
+    <a href="mailto:support@nazerogroup.com">support@nazerogroup.com</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Premises organizes records you create. It doesn't provide legal advice, doesn't determine anyone's legal rights, and isn't a substitute for an attorney.
+  </div>
+</footer>
+
+</body>
+</html>

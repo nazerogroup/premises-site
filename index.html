@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premises — Property incident records</title>
+<meta name="description" content="An iPhone app for documenting what happened at your property. Photographs, documents, and a dated timeline, organized into a report you can hand to an attorney, an insurer, or a responding officer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16191C;
+  --ink-2:#4E555C;
+  --ink-3:#7C838A;
+  --paper:#FCFBF9;
+  --surface:#FFFFFF;
+  --rule:#E4E1DB;
+  --rule-soft:#EFEDE8;
+  --seal:#6B2737;
+  --verify:#2D6A4F;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 28px}
+
+/* ---------- masthead ---------- */
+header{border-bottom:1px solid var(--rule);background:var(--surface)}
+.masthead{display:flex;align-items:baseline;justify-content:space-between;padding:22px 0}
+.logo{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.logo span{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--ink-3);letter-spacing:.04em;margin-left:10px}
+nav{display:flex;gap:26px;font-size:14px}
+nav a{color:var(--ink-2);text-decoration:none}
+nav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 60px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--seal);margin-bottom:20px}
+h1{font-size:clamp(32px,5.4vw,52px);line-height:1.1;font-weight:600;letter-spacing:-.03em;max-width:17ch}
+.lede{font-size:19px;color:var(--ink-2);margin-top:22px;max-width:52ch}
+
+/* ---------- the artifact ---------- */
+.artifact{
+  margin:52px 0 0;background:var(--surface);
+  border:1px solid var(--rule);border-radius:3px;
+  box-shadow:0 1px 2px rgba(22,25,28,.04),0 8px 28px rgba(22,25,28,.05);
+  overflow:hidden;
+}
+.artifact-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:13px 22px;border-bottom:1px solid var(--rule-soft);
+  font-family:var(--mono);font-size:11px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.artifact-body{padding:24px 22px}
+.row{display:grid;grid-template-columns:74px 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--rule-soft)}
+.row:last-child{border-bottom:0}
+.exhibit{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink);padding-top:1px}
+.desc{font-size:15px;font-weight:500}
+.meta{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:6px;word-break:break-all;line-height:1.7}
+.verified{color:var(--verify);font-family:var(--mono);font-size:11.5px;margin-top:5px;display:block}
+.artifact-foot{padding:14px 22px;background:#FAF9F6;border-top:1px solid var(--rule-soft);font-size:13px;color:var(--ink-3)}
+
+/* ---------- sections ---------- */
+section{padding:64px 0;border-top:1px solid var(--rule)}
+h2{font-size:13px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:30px}
+h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:9px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:38px}
+.cols p{color:var(--ink-2);font-size:15.5px}
+
+/* ---------- refusals: the signature ---------- */
+.refusals{background:var(--ink);color:#F2F0EC;border-top:0}
+.refusals h2{color:rgba(242,240,236,.5)}
+.refusals .intro{font-size:21px;max-width:44ch;margin-bottom:34px;letter-spacing:-.01em}
+.refusal-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 44px;list-style:none}
+.refusal-list li{
+  font-family:var(--mono);font-size:13.5px;line-height:1.5;
+  padding:13px 0 13px 26px;border-bottom:1px solid rgba(242,240,236,.13);
+  position:relative;color:rgba(242,240,236,.86);
+}
+.refusal-list li::before{content:"—";position:absolute;left:0;color:rgba(242,240,236,.35)}
+.refusals .after{margin-top:30px;font-size:15.5px;color:rgba(242,240,236,.62);max-width:56ch}
+
+/* ---------- faq ---------- */
+details{border-bottom:1px solid var(--rule-soft);padding:17px 0}
+summary{cursor:pointer;font-weight:500;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--ink-3);flex-shrink:0}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-2);font-size:15.5px;margin-top:11px;max-width:64ch}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px}
+.contact-grid a{color:var(--seal);text-decoration:none;border-bottom:1px solid rgba(107,39,55,.28)}
+.contact-grid a:hover{border-bottom-color:var(--seal)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+
+footer{border-top:1px solid var(--rule);padding:34px 0 60px;font-size:13.5px;color:var(--ink-3)}
+footer a{color:var(--ink-2)}
+.footnote{margin-top:14px;max-width:62ch;line-height:1.65}
+
+@media (max-width:620px){
+  .hero{padding:52px 0 42px}
+  .row{grid-template-columns:1fr;gap:6px}
+  nav{gap:16px;font-size:13px}
+  .masthead{flex-direction:column;align-items:flex-start;gap:14px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .artifact{animation:settle .7s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes settle{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap masthead">
+    <div class="logo">Premises <span>for iPhone</span></div>
+    <nav>
+      <a href="#what">What it does</a>
+      <a href="#limits">What it won't do</a>
+      <a href="#support">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">California · iPhone</div>
+    <h1>Document what happened at your property.</h1>
+    <p class="lede">Photographs, scanned documents, and a dated timeline — organized into a report you can hand to your attorney, your insurer, or a responding officer. Everything stays on your phone.</p>
+
+    <div class="artifact">
+      <div class="artifact-head">
+        <span>Evidence verification</span>
+        <span>Page 9 of 11</span>
+      </div>
+      <div class="artifact-body">
+        <div class="row">
+          <div class="exhibit">E-04</div>
+          <div>
+            <div class="desc">Front door, forced</div>
+            <div class="meta">a3f9c81e7d40b2ff6c5e19a8d73b0c42e6f81a95cc27d3b0e4f7a218d9c6b053</div>
+            <div class="meta">Aug 4, 2026 at 9:22 AM · Captured in app · 11 m from the recorded property address</div>
+            <span class="verified">✓ Matches the fingerprint recorded at capture</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="exhibit">E-05</div>
+          <div>
+            <div class="desc">Document presented by occupant</div>
+            <div class="meta">7c214be09f83a6d5518e0b74cf9a2d63e18740ba5c9f3e26d081ac47b592f6e3</div>
+            <div class="meta">Aug 4, 2026 at 9:41 AM · Captured in app · 8 m from the recorded property address</div>
+            <span class="verified">✓ Matches the fingerprint recorded at capture</span>
+          </div>
+        </div>
+      </div>
+      <div class="artifact-foot">Every file is fingerprinted the moment it's recorded. The report re-checks each one, so a reader can see nothing changed afterward.</div>
+    </div>
+  </div>
+
+  <section id="what">
+    <h2>What it does</h2>
+    <div class="cols">
+      <div>
+        <h3>Tells you what to capture</h3>
+        <p>Pick what's happening and the app gives you a checklist for that situation — which angles, which documents, what's worth photographing before you clean anything up.</p>
+      </div>
+      <div>
+        <h3>Builds the timeline for you</h3>
+        <p>Every photograph, scan, and recording lands on a dated timeline as you go. Gaps are noted rather than hidden, so the record is honest about what it doesn't cover.</p>
+      </div>
+      <div>
+        <h3>Produces the right report</h3>
+        <p>Four versions of the same record, arranged for whoever needs to read it: a short one for an officer on a doorstep, a full one for an attorney, one for an insurer, and one for your own files.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="refusals" id="limits">
+  <div class="wrap">
+    <h2>What it won't do</h2>
+    <p class="intro">Every report ends with a page stating plainly what this app did not determine.</p>
+    <ul class="refusal-list">
+      <li>Whether a tenancy exists</li>
+      <li>Whether anyone is occupying a property unlawfully</li>
+      <li>Whether a document is genuine or legally effective</li>
+      <li>Whether any notice is sufficient</li>
+      <li>Whether a removal would be lawful</li>
+      <li>Whether police should take any action</li>
+      <li>Whether anyone has committed a crime</li>
+      <li>Which account, where accounts differ, is correct</li>
+    </ul>
+    <p class="after">Those are questions for a court, an attorney, or a peace officer. An app that answered them would be worth less, not more — a record that quietly takes a side is the first thing an opposing lawyer takes apart. Premises organizes what you have and says so.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <section id="support">
+    <h2>Support</h2>
+
+    <details>
+      <summary>Where is my data stored?</summary>
+      <p>On your iPhone. Premises has no server and no account system, so there is nowhere else for it to go. Deleting the app deletes everything permanently — nobody can recover it for you, including us.</p>
+    </details>
+
+    <details>
+      <summary>What does the fingerprint actually prove?</summary>
+      <p>That a file hasn't changed since the app recorded it. Each one gets a SHA-256 hash at the moment of capture, and every report re-checks them. It doesn't prove what a photograph shows or who took it — only that it's the same file.</p>
+    </details>
+
+    <details>
+      <summary>Is this legal advice?</summary>
+      <p>No. Premises organizes records you create and links to publicly available official sources — court self-help pages, court forms, bar association referral services. It doesn't interpret them, doesn't tell you which apply to your situation, and isn't a substitute for an attorney.</p>
+    </details>
+
+    <details>
+      <summary>Does it work outside California?</summary>
+      <p>The documentation side works anywhere — capture, fingerprinting, timelines, and reports don't depend on location. The official source links are California-specific for now. Other states are coming.</p>
+    </details>
+
+    <details>
+      <summary>Can I use it without giving location access?</summary>
+      <p>Yes. Photographs are simply recorded without coordinates. The same is true of every permission the app asks for — it keeps working with all of them off, with less in the record.</p>
+    </details>
+
+    <details>
+      <summary>Something's wrong, or I have a question.</summary>
+      <p>Email us using the address below. Include what you were doing when it happened and which iPhone you're on. We read everything.</p>
+    </details>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="label">Support</div>
+        <a href="mailto:support@nazerogroup.com">support@nazerogroup.com</a>
+      </div>
+      <div>
+        <div class="label">Response time</div>
+        <div>Usually within two business days</div>
+      </div>
+      <div>
+        <div class="label">Privacy</div>
+        <a href="privacy.html">Read the privacy policy</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Nazero Group LLC · <a href="privacy.html">Privacy</a></div>
+    <p class="footnote">Premises organizes records you create. It does not provide legal advice, does not determine anyone's legal rights, and is not a substitute for an attorney. Apple and iPhone are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>
